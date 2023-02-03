@@ -5,7 +5,16 @@ export const App = {
 
     render() {
         // ui
-        return h("div", "Hello World! " + this.msg);
+        return h(
+          "div",
+          {
+            id: "root",
+            class: ["red", "hard"],
+          },
+        //   "Hello World! " + this.msg
+        // Array of children
+        [h("p", {class: "red"}, "hi"), h("p", {class: "blue"}, "mini-vue")]
+        );
     },
     setup() {
         return {
