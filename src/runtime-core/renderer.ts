@@ -27,24 +27,28 @@ function processComponent(vnode: any, container: any) {
     mountComponent(vnode, container);
 }
 
-function mountComponent(vnode: any, container: any) {
+function mountComponent(initialVnode: any, container: any) {
     console.log('mountComponent');
-    const instance = createComponentInstance(vnode);
+    const instance = createComponentInstance(initialVnode);
 
     setupComponent(instance);
-    setupRenderEffect(instance, container);
+    setupRenderEffect(instance, initialVnode, container);
 }
 
-function setupRenderEffect(instance: any, container: any) {
-    const subTree = instance.render();
+function setupRenderEffect(instance: any, initialVnode, container: any) {
+    const { proxy } = instance;
+    const subTree = instance.render.call(proxy);
 
     // vnode -> patch
     // vnode -> element -> mountElement
     patch(subTree, container);
+
+    // element -> mount
+    initialVnode.el = subTree.el;
 }
 
 function mountElement(vnode: any, container: any) {
-    const el = document.createElement(vnode.type);
+    const el = (vnode.el = document.createElement(vnode.type));
 
     const { props, children } = vnode;
 
