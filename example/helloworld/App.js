@@ -1,4 +1,5 @@
 import { h } from "../../lib/guide-mini-vue.esm.js";
+import { Foo } from "./Foo.js";
 
 window.self = null;
 
@@ -13,12 +14,16 @@ export const App = {
           {
             id: "root",
             class: ["red", "hard"],
+            onClick() {
+              console.log("click");
+            }
           },
           // settup state
           // this.$el -> get root element
-          "Hello World! " + this.msg
-        // Array of children
-        // [h("p", {class: "red"}, "hi"), h("p", {class: "blue"}, "mini-vue")]
+          // "Hello World! " + this.msg
+          // Array of children
+          // [h("p", {class: "red"}, "hi"), h("p", {class: "blue"}, "mini-vue")]
+          [h("div", {}, "hi, " + this.msg), h(Foo, { count: 1 })]
         );
     },
     setup() {
