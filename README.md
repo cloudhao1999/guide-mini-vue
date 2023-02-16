@@ -64,7 +64,7 @@
 
 - [x] 30-实现 getCurrentInstance
 
-- [ ] 31-实现provide-inject 功能
+- [x] 31-实现provide-inject 功能
 
 - [ ] 32-实现自定义渲染器 custom renderer
 
