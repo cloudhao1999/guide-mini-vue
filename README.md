@@ -66,7 +66,7 @@
 
 - [x] 31-实现provide-inject 功能
 
-- [ ] 32-实现自定义渲染器 custom renderer
+- [x] 32-实现自定义渲染器 custom renderer
 
 - [ ] 33-更新element流程搭建
 
