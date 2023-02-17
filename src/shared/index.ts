@@ -6,6 +6,8 @@ export const hasChanged = (val, newValue) => {
     return !Object.is(val, newValue);
 }
 
+export const EMPTY_OBJ = {};
+
 export const hasOwn = (target, key) => Object.prototype.hasOwnProperty.call(target, key);
 
 export const camelize = (str: string) => {

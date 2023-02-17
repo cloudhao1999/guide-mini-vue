@@ -70,7 +70,7 @@
 
 - [x] 33-更新element流程搭建
 
-- [ ] 34-更新element 的 props
+- [x] 34-更新element 的 props
 
 - [ ] 35-更新 element 的 children
 

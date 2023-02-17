@@ -1,5 +1,5 @@
 import { effect } from "../reactivity/effect";
-import { isObject } from "../shared/index";
+import { EMPTY_OBJ, isObject } from "../shared/index";
 import { ShapeFlags } from "../shared/shapeFlags";
 import { createComponentInstance, setupComponent } from "./component";
 import { createAppAPI } from "./createApp";
@@ -53,14 +53,40 @@ export function createRenderer(options) {
         }
     }
 
+
     function patchElement(n1, n2, container) {
         console.log('patchElement');
         console.log("n1", n1);
         console.log("n2", n2);
 
         // props
+        const oldProps = n1.props || EMPTY_OBJ;
+        const newProps = n2.props || EMPTY_OBJ;
 
+        const el = (n2.el = n1.el);
+        patchProps(el, oldProps, newProps);
         // children
+    }
+
+
+    function patchProps(el, oldProps, newProps) {
+        if (oldProps !== newProps) {
+            for (const key in newProps) {
+                const prevProp = oldProps[key];
+                const nextProp = newProps[key];
+                if (prevProp !== nextProp) {
+                    hostPatchProps(el, key, prevProp, nextProp);
+                }
+            }
+    
+            if (oldProps !== EMPTY_OBJ) {
+                for (const key in oldProps) {
+                    if (!(key in newProps)) {
+                        hostPatchProps(el, key, oldProps[key], null);
+                    }
+                }
+            }
+        }
     }
 
     function processComponent(n1, n2: any, container: any, parentComponent) {
@@ -132,7 +158,7 @@ export function createRenderer(options) {
             // } else {
             //     el.setAttribute(key, val);
             // }
-            hostPatchProps(el, key, val);
+            hostPatchProps(el, key, null, val);
         }
 
         // container.appendChild(el);
