@@ -68,7 +68,7 @@
 
 - [x] 32-实现自定义渲染器 custom renderer
 
-- [ ] 33-更新element流程搭建
+- [x] 33-更新element流程搭建
 
 - [ ] 34-更新element 的 props
 
