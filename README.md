@@ -72,7 +72,7 @@
 
 - [x] 34-更新element 的 props
 
-- [ ] 35-更新 element 的 children
+- [x] 35-更新 element 的 children
 
 - [ ] 36-更新 element 的 children - 双端对比diff 算法 （1）
 

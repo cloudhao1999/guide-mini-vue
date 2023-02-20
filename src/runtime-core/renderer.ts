@@ -10,6 +10,8 @@ export function createRenderer(options) {
         createElement: hostCreateElement,
         patchProps: hostPatchProps,
         insert: hostInsert,
+        remove: hostRemove,
+        setElementText: hostSetElementText,
     } = options;
 
     function render(vnode, container) {
@@ -49,12 +51,12 @@ export function createRenderer(options) {
             mountElement(n2, container, parentComponent);
         } else {
             // update
-            patchElement(n1, n2, container)
+            patchElement(n1, n2, container, parentComponent)
         }
     }
 
 
-    function patchElement(n1, n2, container) {
+    function patchElement(n1, n2, container, parentComponent) {
         console.log('patchElement');
         console.log("n1", n1);
         console.log("n2", n2);
@@ -64,8 +66,39 @@ export function createRenderer(options) {
         const newProps = n2.props || EMPTY_OBJ;
 
         const el = (n2.el = n1.el);
-        patchProps(el, oldProps, newProps);
         // children
+        patchChildren(n1, n2, el, parentComponent);
+        patchProps(el, oldProps, newProps);
+    }
+
+    function patchChildren(n1, n2, container, parentComponent) {
+        const prevShapeFlag = n1.shapeFlag;
+        const shapeFlag = n2.shapeFlag;
+        const c1 = n1.children;
+        const c2 = n2.children;
+
+        if (shapeFlag & ShapeFlags.TEXT_CHILDREN) {
+            if (prevShapeFlag & ShapeFlags.ARRAY_CHILDREN) {
+                // 1. 把老的 children 清空    
+                unmountChildren(n1.children);
+            } 
+            if (c1 !== c2) {
+                hostSetElementText(container, c2);
+            }
+        } else {
+            if (prevShapeFlag & ShapeFlags.TEXT_CHILDREN) {
+                hostSetElementText(container, '');
+                mountChildren(c2, container, parentComponent);
+            }
+        }
+    }
+
+    function unmountChildren(children) {
+        for (let i = 0; i < children.length; i++) {
+            const el = children[i].el;
+            // remove
+            hostRemove(el);
+        }
     }
 
 
