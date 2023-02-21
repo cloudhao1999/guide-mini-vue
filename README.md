@@ -74,7 +74,7 @@
 
 - [x] 35-更新 element 的 children
 
-- [ ] 36-更新 element 的 children - 双端对比diff 算法 （1）
+- [x] 36-更新 element 的 children - 双端对比diff 算法 （1）
 
 - [ ] 37-更新 element 的 children - 双端对比diff 算法 （2）
 
