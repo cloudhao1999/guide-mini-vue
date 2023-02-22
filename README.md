@@ -78,7 +78,7 @@
 
 - [x] 37-更新 element 的 children - 双端对比diff 算法 （2）
 
-- [ ] 38-更新 element 的 children - 双端对比diff 算法 （3）
+- [x] 38-更新 element 的 children - 双端对比diff 算法 （3）
 
 - [ ] 39-学习尤大解决bug的处理方式
 
