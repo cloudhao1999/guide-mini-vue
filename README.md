@@ -84,6 +84,34 @@
 
 - [x] 40-实现组件更新功能
 
+- [x] 41-实现 nextTick 功能
+
+- [ ] 42-编译模块概述
+
+- [ ] 43-实现解析插值功能
+
+- [ ] 44-实现解析 element
+
+- [ ] 45-实现解析 text 功能
+
+- [ ] 46-实现解析三种联合类型
+
+- [ ] 47-parse 的实现原理
+
+- [ ] 48-实现 transform 功能
+
+- [ ] 49-实现代码生成 string 类型
+
+- [ ] 50-实现代码生成插值类型
+
+- [ ] 51-实现代码生成三种联合类型
+
+- [ ] 52-实现编译 template 成 render 函数
+
+- [ ] 53-实现 monorepo
+
+- [ ] 54-实现 watchEffect
+
 ### 课程地址
 
 [Vue3 源码实战课 (cuixueshe.com)](https://learn.cuixueshe.com/p/t_pc/course_pc_detail/column/p_61fb595ce4b0beaee4275e1e)
