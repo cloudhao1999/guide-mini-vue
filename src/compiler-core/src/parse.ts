@@ -10,7 +10,6 @@ export function baseParse(content: string) {
     const context = createContext(content);
     return createRoot(parseChildren(context))
 }
-
 function parseChildren(context) {
     const nodes = [] as any[];
     // {{}}
@@ -23,8 +22,29 @@ function parseChildren(context) {
             node = parseElement(context)
         }
     }
+
+    if (!node) {
+        node = parseText(context)
+    }
+
     nodes.push(node)
     return nodes
+}
+
+function parseText(context: any): any {
+    // 1.获取当前的内容
+    const content = parseTextData(context, context.source.length);
+    return {
+        type: NodeTypes.TEXT,
+        content,
+    }
+}
+
+function parseTextData(context: any, length) {
+    const content = context.source.slice(0, length);
+    // 2.推进
+    anvanceBy(context, length);
+    return content;
 }
 
 function parseElement(context) {
@@ -64,10 +84,10 @@ function parseInterpolation(context) {
 
     const rawContentLength = closeIndex - openDelimiter.length;
 
-    const rawContent = context.source.slice(0, rawContentLength);
+    const rawContent = parseTextData(context, rawContentLength);
     const content = rawContent.trim();
 
-    anvanceBy(context, rawContentLength + closeDelimiter.length);
+    anvanceBy(context, closeDelimiter.length);
 
     return {
         type: NodeTypes.INTERPOLATION,
@@ -93,3 +113,4 @@ function createContext(content: string) {
         source: content,
     }
 }
+
