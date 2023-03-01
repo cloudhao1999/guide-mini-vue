@@ -1,8 +1,15 @@
-export function transform(root, options) {
+export function transform(root, options = {}) {
     const context = ceateTranformContext(root, options);
     // 1. 遍历 - 深度优先遍历
     traverseNode(root, context);
     // 2. 修改 text 的 content
+
+    createRootCodeGen(root)
+    // root.codegenNode
+}
+
+function createRootCodeGen(root) {
+    root.codegenNode = root.children[0]
 }
 
 function ceateTranformContext(root: any, options: any) {
