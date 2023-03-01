@@ -98,7 +98,7 @@
 
 - [x] 47-parse 的实现原理
 
-- [ ] 48-实现 transform 功能
+- [x] 48-实现 transform 功能
 
 - [ ] 49-实现代码生成 string 类型
 
