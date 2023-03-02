@@ -106,7 +106,7 @@
 
 - [x] 51-实现代码生成三种联合类型
 
-- [ ] 52-实现编译 template 成 render 函数
+- [x] 52-实现编译 template 成 render 函数
 
 - [ ] 53-实现 monorepo
 
