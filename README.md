@@ -108,7 +108,7 @@
 
 - [x] 52-实现编译 template 成 render 函数
 
-- [ ] 53-实现 monorepo
+- [x] 53-实现 monorepo
 
 - [ ] 54-实现 watchEffect
 
