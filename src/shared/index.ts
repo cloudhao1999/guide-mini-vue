@@ -2,6 +2,8 @@ export const extend = Object.assign;
 
 export const isObject = (val) => val !== null && typeof val === 'object';
 
+export const isString = (val) => typeof val === 'string';
+
 export const hasChanged = (val, newValue) => {
     return !Object.is(val, newValue);
 }
@@ -21,3 +23,4 @@ export const capitalize = (str: string) =>  {
 export const toHandlerKey = (str: string) => {
     return str ? `on${capitalize(str)}` : "";
 }
+
