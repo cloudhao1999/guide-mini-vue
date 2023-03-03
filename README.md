@@ -110,7 +110,7 @@
 
 - [x] 53-实现 monorepo
 
-- [ ] 54-实现 watchEffect
+- [x] 54-实现 watchEffect
 
 ### 课程地址
 
